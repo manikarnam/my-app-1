@@ -16,13 +16,13 @@ pipeline {
     }
 }
     stage('push image to docker hub') {
-      steps {
+    //  steps {
          withCredentials([string(credentialsId: 'docker-hubp', variable: 'dockerHubPwd')]) {
         sh "docker login -u maniengg -p ${dockerHubPwd}"
         }
-     }
-   }
-   sh 'docker push maniengg/jersy-maven'
+     //}
+   
+      sh 'docker push maniengg/jersy-maven'
       }
    }
 }
