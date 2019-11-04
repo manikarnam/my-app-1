@@ -15,12 +15,12 @@ pipeline {
      sh 'docker build -t maniengg/jersy-maven .'
     }
 }
-    stage('push image to docker hub'){
-      steps{
- 
-       withCredentials([string(credentialsId: 'docker-hubp', variable: 'dockerHubPwd')]) {
+    stage('push image to docker hub') {
+      steps {
+         withCredentials([string(credentialsId: 'docker-hubp', variable: 'dockerHubPwd')]) {
         sh "docker login -u maniengg -p ${dockerHubPwd}"
         }
+     }
    }
    sh 'docker push maniengg/jersy-maven'
       }
